@@ -10,17 +10,15 @@ protected:
 	std::map<int, std::vector<int>> possibleSteps;
 
 public:
-	
 	Marker color;
 	int score;
 
 	Player();
-	Player(Marker c);
 	~Player();
 
-	bool MakeMove(Board & board, char row, int col);
-	bool FindPossibleSteps(Board & board);
-	int CheckDirections(Board & board, int ind);
-	void Flip(Board & board, int ind);
+	bool MakeMove(Board &board, int ind);
+	bool FindPossibleSteps(Board &board);
+	int CheckDirections(Board &board, int ind);
+	void Flip(Board &board, int ind);
 };
 

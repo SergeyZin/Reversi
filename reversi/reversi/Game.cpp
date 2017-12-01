@@ -9,8 +9,6 @@ Game::Game()
 	board.field[28] = BLACK;
 	board.field[35] = BLACK;
 	board.field[36] = WHITE;
-	firstPlayer = Player(WHITE);
-	secondPlayer = AIPlayer(BLACK);
 }
 
 Game::~Game()
@@ -46,13 +44,13 @@ void Game::Run() {
 		if (whoGoes == WHITE) {
 			std::cout << "Human goes...\n> ";
 			std::cin >> row >> col;
-			if (firstPlayer.MakeMove(board, row, col))
+			if (firstPlayer.MakeMove(board, Board::StepToIndex(row, col)))
 				whoGoes = BLACK;
 			else std::cout << "Incorrect input. Try again.\n";
 		}
 		else if (whoGoes == BLACK) {
 			std::cout << "Computer goes...\n";
-			secondPlayer.MakeRandomMove(board);
+			secondPlayer.MakeSmartMove(board);
 			whoGoes = WHITE;
 		}
 	}
